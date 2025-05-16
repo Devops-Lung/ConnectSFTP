@@ -1,4 +1,4 @@
-﻿
+
 $PSNativeCommandArgumentPassing = "Legacy"
 
 Write-Host "+++++++++++++++++CHECK TRANSFERED FILE FROM VINPEARL DATALAKE++++++++++++++++++++++++"
@@ -15,12 +15,18 @@ $chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyymmdd~~~~~~~~~~~~
   /command `
     "open sftp://MarriottAdmin:Marriott%40%24%232022@103.238.211.31:2222/ -hostkey=`"`"ssh-ed25519 255 VPRcg961ZZB31OO9xX0Dytq8fiT6wd3muBDsIPipldo`"`" -rawsettings GSSAPIFwdTGT=1" `
     "echo '===================CONNECTED TO DATALAKE==========================" `
-    "echo '~~~~~~~~~~~ Show $yourProperty Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
-    "ls /fprd/Opera/DATALAKE/Checksum/$yourProperty/$chooseDate/ " `
+    "echo '~~~~~~~~~~~ Show DADMR_HANLP_HPHSI/ Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
+    "ls /fprd/Opera/DATALAKE/Checksum/DADMR_HANLP_HPHSI/$chooseDate" `
+    "echo '~~~~~~~~~~~ Show SGNAK_VCASI_PQCSR Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
+    "ls /fprd/Opera/DATALAKE/Checksum/SGNAK_VCASI_PQCSR/$chooseDate/ " `
+    "echo '~~~~~~~~~~~ Show CXRHT_DADNN_DADHA Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
+    "ls /fprd/Opera/DATALAKE/Checksum/CXRHT_DADNN_DADHA/$chooseDate/ " `
+    "echo '~~~~~~~~~~~ Show HANHP Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
+    "ls /fprd/Opera/DATALAKE/Checksum/HANHP/$chooseDate/ " `
     "echo '~~~~~~~~~~~ Show $yourProperty FinancalTransaction ~~~~~~~~~~~~~~~~~~~~~~~" `
     "ls /fprd/Opera/DATALAKE/FINANCIAL_TRANSACTIONS/$yourProperty/$chooseDate/" `
     "echo '~~~~~~~~~~~ Show $yourProperty RoomList ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" `
-    "ls /fprd/Opera/DATALAKE/RoomList/$yourProperty/20250417/" `
+    "ls /fprd/Opera/DATALAKE/RoomList/$yourProperty/$chooseDate/" `
     "echo '~~~~~~~~~~~ Show $yourProperty TransactionCodeList ~~~~~~~~~~~~~~~~~~~~~~~" `
     "ls /fprd/Opera/DATALAKE/TransactionCodeList/$yourProperty/$chooseDate/" `
     "echo '~~~~~~~~~~~ Show $yourProperty ReservationDailyStatistic ~~~~~~~~~~~~~~~~~" `
