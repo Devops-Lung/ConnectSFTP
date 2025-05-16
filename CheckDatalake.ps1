@@ -6,10 +6,10 @@ Write-Host "+++++++++++++++++CHECK TRANSFERED FILE FROM VINPEARL DATALAKE+++++++
 Write-Host "@Author: Lung Ho"
 Write-Host "@Copyright: May-2025"
 Write-Host "Contact: +84969772250/Zalo/Viber/Whatsapp"
-$yourProperty = Read-Host "~~~~~~~~~~~~Please Input Your Property:~~~~~~~~~~~~~~~~~~~~~"
+$yourProperty = Read-Host "~~~~~~~~~~~~Please Input Your Property (MASHA CODE):~~~~~~~~~~~~~~~~~~~~~"
 while ($true){
 
-$chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyy/mm/dd~~~~~~~~~~~~~~~"
+$chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyymmdd~~~~~~~~~~~~~~~"
 & "C:\Program Files (x86)\WinSCP\WinSCP.com" `
   /log="C:\Temp\WinSCP.log" /ini=nul `
   /command `
