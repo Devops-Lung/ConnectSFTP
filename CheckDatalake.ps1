@@ -11,7 +11,7 @@ while ($true){
 
 $chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyy/mm/dd~~~~~~~~~~~~~~~"
 & "C:\Program Files (x86)\WinSCP\WinSCP.com" `
-  /log="C:\Program Files (x86)\WinSCP\WinSCP.log" /ini=nul `
+  /log="C:\Temp\WinSCP.log" /ini=nul `
   /command `
     "open sftp://MarriottAdmin:Marriott%40%24%232022@103.238.211.31:2222/ -hostkey=`"`"ssh-ed25519 255 VPRcg961ZZB31OO9xX0Dytq8fiT6wd3muBDsIPipldo`"`" -rawsettings GSSAPIFwdTGT=1" `
     "echo '===================CONNECTED TO DATALAKE==========================" `
