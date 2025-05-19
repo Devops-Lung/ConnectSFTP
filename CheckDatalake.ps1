@@ -38,13 +38,7 @@ $chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyymmdd~~~~~~~~~~~~
 $winscpResult = $LastExitCode
 if ($winscpResult -eq 0)
 {
-  Write-Host "====================SUCCESS========================================"
-  $exit = Read-Host "~~~~~~~~~~Are You Want Exit? (Yes to EXIT) ~~~~~~~~~~~~~"
-  if ($exit -eq "Yes"){
-      Write-Host "====================GOOD BYE========================================"
-      exit $winscpResult
-      }
-     
+  Write-Host "====================SUCCESS========================================"     
 }
 else
 {
