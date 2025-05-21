@@ -9,6 +9,11 @@ $toEmail "Your Email Report"
 * Note: Please make sure that .env file and application in the same Folder.
 ## 2. Setup Task Schedule to run trackingDatalake.exe application.
 * Note: Please setup task schedule after run Full sftp sent to Datalake (default 7:00 AM).
+  
+
+## 3. Manual check with yyyyMMdd
+Please run CheckDatalake.exe and fill date you need to check
+
 
   
 <!-- CONTACT -->
