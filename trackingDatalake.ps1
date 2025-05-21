@@ -1,6 +1,12 @@
 ﻿
 $PSNativeCommandArgumentPassing = "Legacy"
-$yourProperty = Get-Content "property.env"
+Get-Content "property.env" | ForEach-Object{
+$invar=$_.Split(" ").Trim()
+Invoke-Expression (Invoke-Command -ScriptBlock{
+$($invar[0])+"="+$($invar[1])
+})
+
+}
 $chooseDate = (Get-Date).AddDays(-1)
 $yesterday =$chooseDate.ToString('yyyyMMdd')
 $string=
@@ -43,12 +49,12 @@ $string=
 $winscpResult = $LastExitCode
 if ($winscpResult -eq 0)
 {
-Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday Success" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "$yourProperty DATA Transfered to Datalake Server'<br>' $string"
+Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday Success" -From $fromEmail -To $toEmail -BodyAsHtm -Body "$yourProperty DATA Transfered to Datalake Server'<br>' $string"
       
 }
 else
 {
- Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday FAILED" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "Please run SFTP in TaskSchedule in OPRSS Again!!!!! '<br>' $string" 
+ Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday FAILED" -From $fromEmail -To $toEmail -BodyAsHtm -Body "Please run SFTP in TaskSchedule in OPRSS Again!!!!! '<br>' $string" 
  exit $winscpResult
 }
 

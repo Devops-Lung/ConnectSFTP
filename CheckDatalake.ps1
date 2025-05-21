@@ -2,7 +2,13 @@
 $PSNativeCommandArgumentPassing = "Legacy"
 $host.ui.RawUI.ForegroundColor ='Green'
 $Host.UI.RawUI.BackgroundColor = 'Black'
-$yourProperty = Get-Content "property.env"
+Get-Content "property.env" | ForEach-Object{
+$invar=$_.Split(" ").Trim()
+Invoke-Expression (Invoke-Command -ScriptBlock{
+$($invar[0])+"="+$($invar[1])
+})
+
+}
 Write-Host "+++++++++++++++++CHECK TRANSFERED FILE FROM VINPEARL DATALAKE++++++++++++++++++++++++"
 
 Write-Host "@Author: Lung Ho"
