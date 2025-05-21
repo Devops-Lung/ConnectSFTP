@@ -14,7 +14,7 @@ $toEmail "Your Email Report"
 <!-- CONTACT -->
 ## Contact
 
-Your Name - honhulung@gmail.com
+Ho Lung - honhulung@gmail.com
 
 Project Link: [https://github.com/Devops-Lung/ConnectSFTP](https://github.com/Devops-Lung/ConnectSFTP)
 
