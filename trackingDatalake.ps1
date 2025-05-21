@@ -1,6 +1,6 @@
 ﻿
 $PSNativeCommandArgumentPassing = "Legacy"
-
+$yourProperty = Get-Content "property.env"
 $chooseDate = (Get-Date).AddDays(-1)
 $yesterday =$chooseDate.ToString('yyyyMMdd')
 $string=
@@ -23,32 +23,32 @@ $string=
     "echo '~~~~~~~~~~~ Show HANHP Checksum ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'<br>'" `
     "ls /fprd/Opera/DATALAKE/Checksum/HANHP/$yesterday/ " `
     "echo '<br>'" `
-    "echo '~~~~~~~~~~~ Show yourProperty FinancalTransaction ~~~~~~~~~~~~~~~~~~~~~~~ '<br>'" `
-    "ls /fprd/Opera/DATALAKE/FINANCIAL_TRANSACTIONS/HANHP/$yesterday/" `
+    "echo '~~~~~~~~~~~ Show $yourProperty FinancalTransaction ~~~~~~~~~~~~~~~~~~~~~~~ '<br>'" `
+    "ls /fprd/Opera/DATALAKE/FINANCIAL_TRANSACTIONS/$yourProperty/$yesterday/" `
     "echo '<br>'" `
-    "echo '~~~~~~~~~~~ Show yourProperty RoomList ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '<br>'" `
-    "ls /fprd/Opera/DATALAKE/RoomList/HANHP/$yesterday/" `
+    "echo '~~~~~~~~~~~ Show $yourProperty RoomList ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ '<br>'" `
+    "ls /fprd/Opera/DATALAKE/RoomList/$yourProperty/$yesterday/" `
     "echo '<br>'" `
-    "echo '~~~~~~~~~~~ Show yourProperty TransactionCodeList ~~~~~~~~~~~~~~~~~~~~~~~'<br>'" `
-    "ls /fprd/Opera/DATALAKE/TransactionCodeList/HANHP/$yesterday/" `
+    "echo '~~~~~~~~~~~ Show $yourProperty TransactionCodeList ~~~~~~~~~~~~~~~~~~~~~~~'<br>'" `
+    "ls /fprd/Opera/DATALAKE/TransactionCodeList/$yourProperty/$yesterday/" `
     "echo '<br>'" `
-    "echo '~~~~~~~~~~~ Show yourProperty ReservationDailyStatistic ~~~~~~~~~~~~~~~~~'<br>'" `
-    "ls /fprd/Opera/DATALAKE/ReservationDailyStatistic/HANHP/$yesterday/" `
+    "echo '~~~~~~~~~~~ Show $yourProperty ReservationDailyStatistic ~~~~~~~~~~~~~~~~~'<br>'" `
+    "ls /fprd/Opera/DATALAKE/ReservationDailyStatistic/$yourProperty/$yesterday/" `
     "echo '<br>'" `
-    "echo '~~~~~~~~~~~ Show yourProperty RoomCategoryStatistic ~~~~~~~~~~~~~~~~~~~~~'<br>'" `
-    "ls /fprd/Opera/DATALAKE/RoomCategoryStatistic/HANHP/$yesterday/" `
+    "echo '~~~~~~~~~~~ Show $yourProperty RoomCategoryStatistic ~~~~~~~~~~~~~~~~~~~~~'<br>'" `
+    "ls /fprd/Opera/DATALAKE/RoomCategoryStatistic/$yourProperty/$yesterday/" `
     "echo '<br>'" `
     "exit"
 
 $winscpResult = $LastExitCode
 if ($winscpResult -eq 0)
 {
-Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE> $yesterday Success" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "All of Data to Datalake Server'<br>' $string"
+Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday Success" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "$yourProperty DATA Transfered to Datalake Server'<br>' $string"
       
 }
 else
 {
- Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE> $yesterday FAILED" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "Please run SFTP in TaskSchedule in OPRSS Again!!!!! '<br>' $string" 
+ Send-MailMessage -SmtpServer "smtp.marriott.com" -Subject "<DATALAKE-$yourProperty> $yesterday FAILED" -From "irfd.hanhp@marriott.com" -To "lung.n.ho@fourpoints.com" -BodyAsHtm -Body "Please run SFTP in TaskSchedule in OPRSS Again!!!!! '<br>' $string" 
  exit $winscpResult
 }
 

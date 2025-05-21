@@ -1,12 +1,13 @@
 
 $PSNativeCommandArgumentPassing = "Legacy"
-
+$host.ui.RawUI.ForegroundColor ='Green'
+$Host.UI.RawUI.BackgroundColor = 'Black'
+$yourProperty = Get-Content "property.env"
 Write-Host "+++++++++++++++++CHECK TRANSFERED FILE FROM VINPEARL DATALAKE++++++++++++++++++++++++"
 
 Write-Host "@Author: Lung Ho"
 Write-Host "@Copyright: May-2025"
 Write-Host "Contact: +84969772250/Zalo/Viber/Whatsapp"
-$yourProperty = Read-Host "~~~~~~~~~~~~Please Input Your Property (MASHA CODE):~~~~~~~~~~~~~~~~~~~~~"
 while ($true){
 
 $chooseDate = Read-Host "~~~~~~~~~~Please Type DATE to find yyyymmdd~~~~~~~~~~~~~~~"
